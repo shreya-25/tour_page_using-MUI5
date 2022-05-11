@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import { AccessTime } from '@mui/icons-material';
 import Rating from '@mui/material/Rating';
 import { createTheme, ThemeProvider } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const theme = createTheme({
     components: {
@@ -33,9 +34,12 @@ const theme = createTheme({
 
 const TourCard = ({tour}) =>
 {
+    const navigate= useNavigate()
     return <Grid item xs={3}>
         <ThemeProvider theme={theme}>
-        <Paper elevation={3}>
+        <Paper elevation={3} onClick={()=> {
+         navigate( `/${tour.name}`)
+        }}>
             <img src={tour.image} className="img" alt=""/>
             <Box paddingX ={1}>
             <Typography variant="subtitle2" component="h6">
